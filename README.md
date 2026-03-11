@@ -86,7 +86,7 @@ astro-i18n-sample/
 │       ├── index.astro           ← /（日本語）
 │       ├── en/index.astro        ← /en/
 │       └── fr/index.astro        ← /fr/
-├── .github/workflows/build.yml   ← ⑤ CI/CD（毎日自動ビルド）
+├── .github/workflows/build.yml   ← ⑤ Cloudflare Pages 手動デプロイ
 ├── .env.example
 └── astro.config.mjs
 ```
