@@ -1,0 +1,44 @@
+# .github/workflows/build.yml
+#
+# スプレッドシートから翻訳データを取得してAstroサイトをビルドし、
+# Cloudflare Pages へ手動デプロイするワークフロー。
+#
+# GitHub UI の "Run workflow" ボタンで実行してください。
+
+name: Deploy to Cloudflare Pages
+
+on:
+  workflow_dispatch:   # 手動トリガーのみ
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch translations from Google Apps Script
+        env:
+          GAS_ENDPOINT: ${{ secrets.GAS_ENDPOINT }}
+        run: node scripts/fetch-translations.mjs
+
+      - name: Build Astro site
+        run: npx astro build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy dist/ --project-name=my-i18n-site
+

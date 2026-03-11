@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "私たちについて",
+    "services": "サービス",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "title": "ようこそ",
+    "subtitle": "スプレッドシート駆動の多言語サイト",
+    "cta": "詳しく見る"
+  },
+  "features": {
+    "title": "特徴",
+    "items": [
+      {
+        "title": "スプレッドシート管理",
+        "description": "翻訳データをGoogleスプレッドシートで一元管理。エンジニア不要で翻訳を更新できます。"
+      },
+      {
+        "title": "自動ビルド",
+        "description": "GitHub ActionsでGASから最新の翻訳データを取得してビルドします。"
+      },
+      {
+        "title": "Astro製",
+        "description": "静的サイトジェネレーターAstroを使い、高速で最適化されたサイトを生成します。"
+      }
+    ]
+  },
+  "footer": {
+    "rights": "© 2025 多言語サンプル. All rights reserved.",
+    "lang": "言語を選択"
+  },
+  "meta": {
+    "description": "GASで翻訳を管理するAstro多言語サイトのサンプル"
+  }
+}

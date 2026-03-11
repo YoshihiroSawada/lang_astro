@@ -1,0 +1,100 @@
+---
+/**
+ * src/pages/fr/index.astro  →  /fr/
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const locale = 'fr';
+const t = useTranslations(locale);
+const featureCount = 3;
+---
+
+<BaseLayout locale={locale}>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Astro × Tableur i18n</p>
+      <h1 class="hero-title">{t('hero.title')}</h1>
+      <p class="hero-subtitle">{t('hero.subtitle')}</p>
+      <a href="#features" class="hero-cta">{t('hero.cta')} →</a>
+    </div>
+    <div class="hero-deco" aria-hidden="true">
+      <span class="deco-char">B</span>
+      <span class="deco-char">i</span>
+      <span class="deco-char">e</span>
+      <span class="deco-char">n</span>
+    </div>
+  </section>
+
+  <section class="flow-section">
+    <div class="container">
+      <h2 class="section-label">Comment ça marche</h2>
+      <ol class="flow">
+        <li class="flow-step">
+          <span class="step-num">01</span>
+          <div><strong>Éditer le tableur</strong><p>Les traducteurs mettent à jour Google Sheets directement.</p></div>
+        </li>
+        <li class="flow-arrow">↓</li>
+        <li class="flow-step">
+          <span class="step-num">02</span>
+          <div><strong>Récupérer le JSON</strong><p><code>scripts/fetch-translations.mjs</code> s'exécute avant chaque build.</p></div>
+        </li>
+        <li class="flow-arrow">↓</li>
+        <li class="flow-step">
+          <span class="step-num">03</span>
+          <div><strong>Build statique Astro</strong><p>Un HTML distinct est généré pour chaque locale.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="features-section" id="features">
+    <div class="container">
+      <h2 class="features-title">{t('features.title')}</h2>
+      <div class="features-grid">
+        {Array.from({ length: featureCount }, (_, i) => (
+          <article class="feature-card">
+            <span class="feature-num">0{i + 1}</span>
+            <h3>{t(`features.items.${i}.title`)}</h3>
+            <p>{t(`features.items.${i}.description`)}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .hero { min-height: 72vh; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 6rem 2rem 4rem; max-width: 1200px; margin: 0 auto; gap: 2rem; }
+  .hero-eyebrow { font-family: var(--mono); font-size: .8rem; color: var(--accent); letter-spacing: .1em; margin-bottom: 1rem; }
+  .hero-title { font-family: var(--serif); font-size: clamp(4rem, 10vw, 8rem); line-height: 1; margin-bottom: 1rem; }
+  .hero-subtitle { font-size: 1.1rem; color: var(--mid); max-width: 40ch; margin-bottom: 2rem; line-height: 1.7; }
+  .hero-cta { display: inline-block; font-family: var(--mono); font-size: .9rem; padding: .75rem 2rem; background: var(--ink); color: var(--paper); text-decoration: none; border: 2px solid var(--ink); transition: background .2s, color .2s; }
+  .hero-cta:hover { background: transparent; color: var(--ink); }
+  .hero-deco { display: flex; flex-direction: column; gap: .5rem; }
+  .deco-char { font-family: var(--mono); font-size: clamp(3rem, 7vw, 6rem); color: transparent; -webkit-text-stroke: 1.5px var(--border); line-height: 1; animation: floatChar 6s ease-in-out infinite; }
+  .deco-char:nth-child(2) { animation-delay: .5s; }
+  .deco-char:nth-child(3) { animation-delay: 1s; }
+  .deco-char:nth-child(4) { animation-delay: 1.5s; }
+  @keyframes floatChar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .flow-section { background: var(--ink); color: var(--paper); padding: 5rem 0; }
+  .section-label { font-family: var(--mono); font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+  .flow { list-style: none; display: flex; flex-direction: column; gap: .5rem; max-width: 640px; }
+  .flow-step { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem; border: 1px solid #333; background: #1a1a1a; }
+  .step-num { font-family: var(--mono); color: var(--accent); font-size: 1.5rem; line-height: 1; }
+  .flow-step strong { display: block; margin-bottom: .25rem; }
+  .flow-step p { font-size: .9rem; color: #aaa; }
+  .flow-step code { font-family: var(--mono); font-size: .85em; color: var(--accent); }
+  .flow-arrow { font-size: 1.5rem; color: #444; padding-left: 2rem; }
+  .features-section { padding: 6rem 0; }
+  .features-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 3rem; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; border: 2px solid var(--ink); }
+  .feature-card { padding: 2.5rem; border-right: 2px solid var(--ink); }
+  .feature-card:last-child { border-right: none; }
+  .feature-num { font-family: var(--mono); font-size: .75rem; color: var(--accent); display: block; margin-bottom: 1rem; }
+  .feature-card h3 { font-size: 1.1rem; margin-bottom: .75rem; }
+  .feature-card p { font-size: .9rem; line-height: 1.7; color: #555; }
+</style>

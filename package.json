@@ -1,0 +1,14 @@
+{
+  "name": "astro-i18n-sample",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run fetch-translations && astro dev",
+    "build": "npm run fetch-translations && astro build",
+    "fetch-translations": "node scripts/fetch-translations.mjs",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.0.0"
+  }
+}

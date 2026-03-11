@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Welcome",
+    "subtitle": "Spreadsheet-driven Multilingual Site",
+    "cta": "Learn More"
+  },
+  "features": {
+    "title": "Features",
+    "items": [
+      {
+        "title": "Spreadsheet Management",
+        "description": "Manage all translations centrally in Google Sheets. No engineers needed to update copy."
+      },
+      {
+        "title": "Automated Builds",
+        "description": "GitHub Actions fetches the latest translations from GAS before each build."
+      },
+      {
+        "title": "Built with Astro",
+        "description": "Using the static site generator Astro to produce fast, optimized sites."
+      }
+    ]
+  },
+  "footer": {
+    "rights": "© 2025 i18n Sample. All rights reserved.",
+    "lang": "Select Language"
+  },
+  "meta": {
+    "description": "Sample Astro multilingual site with GAS-managed translations"
+  }
+}
