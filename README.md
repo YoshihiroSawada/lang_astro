@@ -45,7 +45,7 @@ npm install
 
 # 2. 環境変数の設定
 cp .env.example .env
-# .env を編集して GOOGLE_SHEETS_API_KEY と SHEET_ID を設定
+# .env を編集して GAS_ENDPOINTにGASのWebアプリ公開URL（/exec で終わるURL）を設定
 
 # 3. 開発サーバー起動（翻訳データを自動取得してから起動）
 npm run dev
